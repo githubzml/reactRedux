@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import TodoList from './TodoList';
+//被provider包裹 都可以获取 store里面的值
+import { Provider } from "react-redux"
+import store from "./store"
+const App = (
+    //提供器 提供了store属性
+    <Provider store={store}>
+        <TodoList />
+    </Provider>
+)
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(App, document.getElementById('root'));
